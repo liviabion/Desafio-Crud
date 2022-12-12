@@ -25,9 +25,9 @@ export default class AspiringController implements Crud {
 
     async delete(request: Request, response: Response){
         const { id } = request.params;
-        const {value: userFound, message } = await Citi.findByID(Aspiring, id); 
+        const {value: aspiringFound, message } = await Citi.findByID(Aspiring, id); 
         
-        if(!userFound) return response.status(400).send({ message });
+        if(!aspiringFound) return response.status(400).send({ message });
 
         const {httpStatus, messageFromDelete } = await Citi.deleteValue(Aspiring, aspiringFound);
         return response.status(httpStatus).send({ messageFromDelete });
